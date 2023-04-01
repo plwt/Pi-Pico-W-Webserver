@@ -28,7 +28,7 @@ def open_socket(ip):
     connection = socket.socket()
     connection.bind(address)
     connection.listen(1)
-    returnne
+    return connection
 
 
 def webpage(temperature, time):
@@ -36,11 +36,11 @@ def webpage(temperature, time):
     html = f"""
             <!DOCTYPE html>
             <html>
-	          <body style="background-color:#000000">
+	    <body style="background-color:#000000">
             <p> </p>
-	          <p style="color:#00ff41">Temperature is {temperature}</p>
+	    <p style="color:#00ff41">Temperature is {temperature}</p>
             <p> </p>
-            <p style="color:#00ff41">Timr<a href="https://plwt.github.io/tfpico.html">But whaare you really?</a></p> 
+            <p style="color:#00ff41">Time is {formatted_time}<p> 
             </body>
             </html>
             """
