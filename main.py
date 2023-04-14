@@ -8,6 +8,7 @@ import time
 ssid = 'ADDIDHERE'
 password = 'ADDPASSWORDHERE'
 
+
 def connect():
     #Connect to WLAN
     wlan = network.WLAN(network.STA_IF)
@@ -20,6 +21,7 @@ def connect():
     print(f'Connected on {ip}')
     return ip
     
+
 def open_socket(ip):
     # Open a socket
     address = (ip, 80)
@@ -27,6 +29,7 @@ def open_socket(ip):
     connection.bind(address)
     connection.listen(1)
     return connection
+
 
 def webpage(temperature, uptime_hours):
     #Template HTML
@@ -43,6 +46,7 @@ def webpage(temperature, uptime_hours):
             """
     return str(html)
  
+
 def serve(connection):
     #Start a webserver
     while True:
@@ -65,3 +69,5 @@ try:
     ip = connect()
     connection = open_socket(ip)
     serve(connection)
+except KeyboardInterrupt:
+    machine.reset()
