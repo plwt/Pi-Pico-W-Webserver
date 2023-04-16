@@ -41,7 +41,7 @@ def webpage(temperature, uptime_hours):
             <p> </p>
             <p style="color:#00ff41; font-size:40px">Temperature is {temperature} *C</p>
             <p> </p>
-            <p style="color:#00ff41; font-size:40px">Uptime is {uptime_hours} seconds</p> 
+            <p style="color:#00ff41; font-size:40px">Uptime is {uptime_sec} seconds</p> 
             </body>
             </html>
             """
