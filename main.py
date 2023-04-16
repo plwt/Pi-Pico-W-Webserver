@@ -38,9 +38,9 @@ def webpage(temperature, uptime_hours):
             <html>
             <body style="background-color:#000000">
             <p> </p>
-            <p style="color:#00ff41; font-size:40px">Temperature is {temperature}</p>
+            <p style="color:#00ff41; font-size:40px">Temperature is {temperature} *C</p>
             <p> </p>
-            <p style="color:#00ff41; font-size:40px">Uptime is {uptime_hours} hours</p> 
+            <p style="color:#00ff41; font-size:40px">Uptime is {uptime_hours} seconds</p> 
             </body>
             </html>
             """
@@ -58,9 +58,9 @@ def serve(connection):
         except IndexError:
             pass
         temperature = pico_temp_sensor.temp
-	uptime_seconds = time.ticks_us()
-	uptime_hours = uptime_seconds / 3600000000
-	html = webpage(temperature, uptime_hours)
+	uptime_ms = time.ticks_us()
+	uptime_sec = uptime_ms // 1000
+	html = webpage(temperature, uptime_sec)
         client.send(html)
         client.close()
 
