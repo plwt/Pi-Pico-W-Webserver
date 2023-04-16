@@ -4,6 +4,7 @@ from time import sleep
 from picozero import pico_temp_sensor
 import machine
 import time
+import utime
 
 ssid = 'ADDIDHERE'
 password = 'ADDPASSWORDHERE'
