@@ -3,8 +3,8 @@ import socket
 from time import sleep
 from picozero import pico_temp_sensor
 import machine
-import time
-import utime
+#import time
+#import utime
 
 ssid = 'ADDIDHERE'
 password = 'ADDPASSWORDHERE'
@@ -32,9 +32,23 @@ def open_socket(ip):
     return connection
 
 
-def webpage(temperature, uptime_hours):
-    #Template HTML
+def webpage(temperature):
+    Template HTML
     html = f"""
+            <!DOCTYPE html>
+            <html>
+            <body style="background-color:#000000">
+            <p> </p>
+            <p style="color:#00ff41; font-size:50px">Temperature is {temperature} *C</p>
+            <p> </p>
+            </body>
+            </html>
+            """
+    return str(html)
+
+#def webpage(temperature, uptime_hours):
+    #Template HTML
+    #html = f"""
             <!DOCTYPE html>
             <html>
             <body style="background-color:#000000">
@@ -45,7 +59,7 @@ def webpage(temperature, uptime_hours):
             </body>
             </html>
             """
-    return str(html)
+    #return str(html)
  
 
 def serve(connection):
@@ -59,9 +73,10 @@ def serve(connection):
         except IndexError:
             pass
         temperature = pico_temp_sensor.temp
-	uptime_ms = time.ticks_us()
-	uptime_sec = uptime_ms // 1000
-	html = webpage(temperature, uptime_sec)
+	#uptime_ms = time.ticks_us()
+	#uptime_sec = uptime_ms // 1000
+	#html = webpage(temperature, uptime_sec)
+	html = webpage(temperature)
         client.send(html)
         client.close()
 
