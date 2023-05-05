@@ -46,21 +46,6 @@ def webpage(temperature):
             """
     return str(html)
 
-#def webpage(temperature, uptime_hours):
-    #Template HTML
-    #html = f"""
-            <!DOCTYPE html>
-            <html>
-            <body style="background-color:#000000">
-            <p> </p>
-            <p style="color:#00ff41; font-size:40px">Temperature is {temperature} *C</p>
-            <p> </p>
-            <p style="color:#00ff41; font-size:40px">Uptime is {uptime_sec} seconds</p> 
-            </body>
-            </html>
-            """
-    #return str(html)
- 
 
 def serve(connection):
     #Start a webserver
@@ -73,9 +58,6 @@ def serve(connection):
         except IndexError:
             pass
         temperature = pico_temp_sensor.temp
-	#uptime_ms = time.ticks_us()
-	#uptime_sec = uptime_ms // 1000
-	#html = webpage(temperature, uptime_sec)
 	html = webpage(temperature)
         client.send(html)
         client.close()
