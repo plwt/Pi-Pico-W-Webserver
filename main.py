@@ -33,7 +33,7 @@ def open_socket(ip):
 
 
 def webpage(temperature):
-    Template HTML
+    # Template HTML
     html = f"""
             <!DOCTYPE html>
             <html>
